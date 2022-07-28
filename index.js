@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import router from './router.js';
 import fileUpload from 'express-fileupload';
 import bodyParser from 'body-parser'
+import { allowCrossDomain } from './MiddleWares.js';
 
 const PORT = process.env.PORT || 3080;
 const app = express();
@@ -13,7 +14,7 @@ app.use(bodyParser.json())
 app.use(fileUpload())
 app.use(express.static('static'))
 app.use('/api', router)
-
+app.use(allowCrossDomain);
 async function startApp() {
 	try {
 		await mongoose.connect(DB_URL)
