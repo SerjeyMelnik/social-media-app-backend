@@ -21,7 +21,6 @@ class PostService {
 			throw new Error('Id is not specified')
 		}
 		const post = await Post.findById(id);
-		console.log(post);
 		return post
 
 	}

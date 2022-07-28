@@ -36,7 +36,7 @@ class PostController {
 
 			return res.json(updatedPost)
 		} catch (error) {
-			console.log(error);
+
 			res.status(500).json(error.message)
 
 		}
