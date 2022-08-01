@@ -1,14 +1,14 @@
 import FileService from "./FileService.js"
 import Post from "./Post.js"
-
+const HOST = process.env.HOST;
 
 
 class PostService {
 	async create(post, picture) {
-		const fileName = FileService.saveFile(picture)
-		const createdPost = await Post.create({ ...post, picture: fileName })
+		const fileName = FileService.saveFile(picture);
+		const linkToPicture = HOST + '/' + fileName;
+		const createdPost = await Post.create({ ...post, picture: linkToPicture })
 		return createdPost
-
 	}
 	async getAll() {
 

@@ -7,7 +7,7 @@ import { allowCrossDomain } from './MiddleWares.js';
 
 const PORT = process.env.PORT || 3080;
 const app = express();
-const DB_URL = `mongodb+srv://testBD:testBD@cluster0.ls094.mongodb.net/?retryWrites=true&w=majority`
+const DB_URL = process.env.DB_URL;
 
 app.use(express.json())
 app.use(bodyParser.json())
