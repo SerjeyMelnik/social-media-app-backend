@@ -5,6 +5,9 @@ import fileUpload from 'express-fileupload';
 import bodyParser from 'body-parser'
 import { allowCrossDomain } from './MiddleWares.js';
 
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 const PORT = process.env.PORT || 3080;
 const app = express();
 const DB_URL = process.env.DB_URL;
