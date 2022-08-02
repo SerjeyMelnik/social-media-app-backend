@@ -1,7 +1,7 @@
 
 import * as uuid from 'uuid';
 import * as path from 'path';
-import { Url } from 'node:url'
+const HOST = process.env.HOST;
 class FileService {
 	saveFile(file) {
 		try {
@@ -9,7 +9,8 @@ class FileService {
 			const filePath = path.resolve('static', fileName);
 			file.mv(filePath);
 			console.log(fileName);
-			return fileName;
+			const linkToPicture = HOST + '/' + fileName;
+			return { fileName, linkToPicture };
 		} catch (error) {
 			console.log(error)
 		}

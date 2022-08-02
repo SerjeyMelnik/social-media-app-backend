@@ -5,8 +5,8 @@ const HOST = process.env.HOST;
 
 class PostService {
 	async create(post, picture) {
-		const fileName = FileService.saveFile(picture);
-		const linkToPicture = HOST + '/' + fileName;
+		const { fileName, linkToPicture } = FileService.saveFile(picture);
+
 		const createdPost = await Post.create({ ...post, picture: linkToPicture })
 		return createdPost
 	}
@@ -30,7 +30,9 @@ class PostService {
 			throw new Error('Id is not specified')
 		}
 		if (picture) {
-			newPost.picture = FileService.saveFile(picture);
+			const { fileName, linkToPicture } = FileService.saveFile(picture);
+
+			newPost.picture = linkToPicture;
 		}
 		const updatedPost = await Post.findByIdAndUpdate(postId, newPost, { new: true })
 		return updatedPost
