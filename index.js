@@ -18,6 +18,8 @@ app.use(fileUpload())
 app.use(express.static('static'))
 app.use('/api', router)
 app.use(allowCrossDomain);
+
+
 async function startApp() {
 	try {
 		await mongoose.connect(DB_URL)
