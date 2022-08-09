@@ -1,7 +1,7 @@
-import FileService from "./FileService.js"
-import Post from "./Post.js"
-const HOST = process.env.HOST;
 
+import Post from '../../Schemes/Post.js';
+const HOST = process.env.API_URL;
+import FileService from '../../Utils/FileService.js'
 
 class PostService {
 	async create(post, picture) {

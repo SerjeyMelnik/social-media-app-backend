@@ -1,7 +1,7 @@
 
 import * as uuid from 'uuid';
 import * as path from 'path';
-const HOST = process.env.HOST;
+const API_URL = process.env.API_URL;
 class FileService {
 	saveFile(file) {
 		try {
@@ -9,7 +9,7 @@ class FileService {
 			const filePath = path.resolve('static', fileName);
 			file.mv(filePath);
 			console.log(fileName);
-			const linkToPicture = HOST + '/' + fileName;
+			const linkToPicture = API_URL + '/' + fileName;
 			return { fileName, linkToPicture };
 		} catch (error) {
 			console.log(error)
